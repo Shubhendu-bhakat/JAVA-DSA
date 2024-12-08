@@ -22,7 +22,7 @@ public class fractionalKnapsack {
                 capacity -= weight[idx];
             } else{
                 finalVal += ratio[i][1]*capacity;
-                capacity =0;
+                capacity = 0;
                 break;
             }
         }
