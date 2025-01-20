@@ -18,11 +18,13 @@ public class insertionIntoHeap {
                 x = parent;
                 parent = (x - 1) / 2;
             }
-    
-            System.out.println(ar); 
         }
         public int peek(){
             return ar.get(0);
+        }
+        //printing the heap value
+        public void print(){
+            System.out.println(ar);
         }
         //heapify
         private void heapify(int idx){
@@ -64,5 +66,8 @@ public class insertionIntoHeap {
         for(int i=12;i>0;i--){
             n.add(i);
         }
+        n.print();
+        n.remove();
+        n.print();
     }
 }
