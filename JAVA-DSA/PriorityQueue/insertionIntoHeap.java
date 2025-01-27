@@ -31,7 +31,7 @@ public class insertionIntoHeap {
             int left = 2*idx+1;
             int right = 2*idx;
             int midIdx = idx;
-            if(left < ar.size() && ar.get(midIdx) > ar.get(right)){
+            if(left < ar.size() && ar.get(midIdx) > ar.get(left)){
                 midIdx = left;
             }
             if(right < ar.size() && ar.get(midIdx) < ar.get(right) ){
