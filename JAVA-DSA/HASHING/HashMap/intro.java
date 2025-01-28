@@ -11,6 +11,14 @@ public class intro{
         hm.put("Japan", 1);
         //get operation
         System.out.println(hm.get("china"));
+        System.out.println(hm);
+        //get function
+        System.out.println(hm.get("India"));
+        //size function and is Empty function and clear function
+        System.out.println(hm.size());
+        System.out.println(hm.isEmpty());
+        hm.clear();
+        System.out.println(hm);
 
     }
 }
