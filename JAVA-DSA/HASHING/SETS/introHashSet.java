@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class introHashSet {
 
@@ -9,5 +10,12 @@ public class introHashSet {
         hs.add(6);
         hs.add(null);
         System.out.println(hs);
+        if(hs.contains(1) ){
+            System.out.println("Hello");
+        }
+      Iterator it = hs.iterator();
+      while(it.hasNext()){
+        System.out.println(it.next());
+      } 
     }
 }

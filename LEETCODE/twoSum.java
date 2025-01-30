@@ -18,7 +18,7 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 public class twoSum {
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum1(int[] nums, int target) {
         int n = nums.length;
         for(int i=0;i<n-1;i++){
             for(int j=i+1;j<n;j++){
@@ -33,6 +33,6 @@ public class twoSum {
     public static void main(String[] args) {
         int ar[] = {2,7,11,15};
         int targer = 9;
-       System.out.println(twoSum(ar, targer)); 
+       System.out.println(twoSum1(ar, targer)); 
     }
 }

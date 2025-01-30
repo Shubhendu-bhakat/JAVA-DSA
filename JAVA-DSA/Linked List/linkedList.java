@@ -1,4 +1,4 @@
-import java.security.PublicKey;
+
 
 public class linkedList {
     public static class Node {
@@ -174,6 +174,76 @@ public class linkedList {
         return;
     }
 
+
+
+    public static Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;//+2 hare
+            slow = slow.next;//turtle +1
+        }
+        return slow;
+    }
+    public static boolean checkPalindrome(){
+        //corner case
+        if(head == null || head.next ==null){
+            return true;
+        }
+        //s1 find mid
+        Node mid = findMid(head);
+        //s2 reverse the second half
+        Node prev = null;
+        Node next = null;
+        Node curr = mid;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        //check individual element 
+        Node righ = prev;
+        Node left = head;
+        while(righ != null){
+            if(left.data != righ.data){
+                return false;
+            }
+            righ = righ.next;
+            left = left.next;
+        }
+        return true;
+    }
+
+
+    public static void removeCycle(Node head){
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        Node prev = null;
+        while(fast != null || fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+               cycle = true;
+               break;
+            }
+        }
+        if(cycle == false){
+            return;
+        }
+        slow = head;
+        while(slow != fast){
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;
+        
+    }
+    public static void MergeSort(Node head){
+        
+    }
     public static void main(String[] args) {
         linkedList LL = new linkedList();
       
@@ -196,3 +266,129 @@ public class linkedList {
     }
 
 }
+
+
+
+//   claud solution
+// /*
+//  * 
+//  * 
+//  * 
+//  * /**
+//  * Definition for singly-linked list.
+//  * public class ListNode {
+//  *     int val;
+//  *     ListNode next;
+//  *     ListNode() {}
+//  *     ListNode(int val) { this.val = val; }
+//  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+//  * }
+//  */
+// class Solution {
+//     public ListNode findMid(ListNode head) {
+//         ListNode slow = head;
+//         ListNode fast = head.next;
+//         while (fast != null && fast.next != null) {
+//             slow = slow.next;
+//             fast = fast.next.next;
+//         }
+//         return slow;
+//     }
+    
+//     public ListNode merge(ListNode head1, ListNode head2) {
+//         ListNode mergedLL = new ListNode(-1);
+//         ListNode temp = mergedLL;
+//         while (head1 != null && head2 != null) {
+//             if (head1.val <= head2.val) {
+//                 temp.next = head1;
+//                 head1 = head1.next;
+//             } else {
+//                 temp.next = head2;
+//                 head2 = head2.next;
+//             }
+//             temp = temp.next;
+//         }
+//         // Fix: Move these outside the while loop
+//         if (head1 != null) {
+//             temp.next = head1;
+//         }
+//         if (head2 != null) {
+//             temp.next = head2;
+//         }
+//         return mergedLL.next;
+//     }
+    
+//     public ListNode sortList(ListNode head) {
+//         if (head == null || head.next == null) {
+//             return head;
+//         }
+//         //s1 is to find the mid
+//         ListNode midNode = findMid(head);
+//         ListNode rightHead = midNode.next;
+//         midNode.next = null; //break the link
+        
+//         ListNode newLeft = sortList(head);
+//         ListNode newRight = sortList(rightHead);
+//         return merge(newLeft, newRight);
+//     }
+// }
+//  */
+
+
+
+//my solution
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+// class Solution {
+//     public ListNode findMid(ListNode head){
+//         ListNode slow = head;
+//         ListNode fast = head.next;
+//         while(fast != null && fast.next != null){
+//             slow = slow.next;
+//             fast = fast.next.next;
+//         }
+//         return slow;
+//     }
+//     public ListNode merge(ListNode head1 , ListNode head2){
+//         ListNode mergedLL = new ListNode(-1);
+//         ListNode temp = mergedLL;
+//         while(head1 != null && head2 != null){
+//             if(head1.val <= head2.val){
+//                 temp.next = head1;
+//                 head1 = head1.next;
+//             }else{
+//                 temp.next = head2;
+//                 head2 = head2.next;
+//             }
+//             temp = temp.next;
+//          }
+//             while(head1 != null){
+//                 temp.next = head1;
+//             }
+//             while(head2 != null){
+//                 temp.next = head2;
+//             }
+//         }
+//          return mergedLL.next;
+//     }
+//     public ListNode sortList(ListNode head) {
+//         if(head == null || head.next == null){
+//             return head;
+//         }
+//        //s1 is to find the mid
+//        ListNode midNode = findMid(head);
+//        ListNode rightHead = midNode.next;
+//        midNode.next = null;//break the link 
+//         ListNode newLeft =  sortList(head);
+//         ListNode newRight =  sortList(rightHead);
+//        return  merge(newLeft,newRight);
+//     }
+// }
