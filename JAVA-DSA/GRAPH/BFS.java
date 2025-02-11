@@ -57,10 +57,23 @@ public class BFS {
             }
         }
     }
+    public static void dfs(ArrayList<Edge>[] graph , int curr , boolean[] visited){
+        //visite the first node
+        System.out.print(curr+" ");
+        visited[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(!visited[e.dst]){
+                dfs(graph, e.dst, visited);
+            }
+        }
+    }
     public static void main(String[] args) {
         int v = 7;
         ArrayList<Edge>[] graph = new ArrayList[v];
         createGraph(graph);
         bfs(graph);
+        System.out.println("DFS");
+        dfs(graph, 0, new boolean[v]);
     }
 }
