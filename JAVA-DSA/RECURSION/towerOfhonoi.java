@@ -12,6 +12,6 @@ public class towerOfhonoi {
 
     }
     public static void main(String[] args) {
-        towerOFHonoi(4, "A", "B", "C");
+        towerOFHonoi(3, "A", "B", "C");
     }
 }

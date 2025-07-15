@@ -51,5 +51,7 @@ public class creatinOfTrie {
         System.out.println(search("ice"));
         String key = "ilikesamsung";
         System.out.println(wordBreak(key));
+        String s = "ahubhebdjewsd";
+       System.out.println(s.startsWith("aw")); 
     }
 }
